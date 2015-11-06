@@ -1,15 +1,20 @@
-//your variable declarations here
+PImage alienblaster;
 public void setup() 
 {
-  //your code here
+  alienblaster = loadImage("alienblaster.png");
+  size (1250,800);
+  background (0);
 }
 public void draw() 
 {
-  //your code here
+  image(alienblaster,0,0);
 }
 class SpaceShip //extends Floater  
-{   
-    //your code here
+{
+  SpaceShip()
+  {
+  }
+    
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
@@ -87,4 +92,3 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     endShape(CLOSE);  
   }   
 } 
-
