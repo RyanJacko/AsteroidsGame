@@ -1,7 +1,7 @@
-
+Bar Bob;
 SpaceShip Blaster;
 Star Rob;
-int sw, sh;
+int sw, sh, health, rama;
 Star[] stars;
 public void setup() 
 {
@@ -14,6 +14,7 @@ public void setup()
   }
   sw = 1250;
   sh = 800;
+  Bob = new Bar();
   Blaster = new SpaceShip();
 }
 public void draw() 
@@ -33,6 +34,7 @@ public void draw()
    stars[i].show();
    System.out.println("Star" + System.currentTimeMillis());
   }
+  Bob.show();
   Blaster.show();
   System.out.println("Blaster" + System.currentTimeMillis());
   Blaster.keyPressed();
@@ -49,7 +51,21 @@ void keyPressed()
    Blaster.setDirectionY(0);
  }
 }
-
+public class Bar
+{
+  public int v1, myValue;
+  Bar()
+  {
+   // v1 = myValue;
+    myValue = 800;
+  }
+  public void show()
+  {
+    fill(255);
+   rect (1250,800,50,800);
+  }
+}
+  
 public class Star
 {
   int posX, posY, mySize;
