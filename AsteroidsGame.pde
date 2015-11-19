@@ -1,12 +1,20 @@
+
 SpaceShip Blaster;
+Star Rob;
 int sw, sh;
+Star[] stars;
 public void setup() 
 {
+  size (1250, 800);
+  background (0);
+  stars = new Star[50];
+  for (int i = 0; i < stars.length; i++)
+  {
+    stars[i] = new Star();
+  }
   sw = 1250;
   sh = 800;
   Blaster = new SpaceShip();
-  size (1250, 800);
-  background (0);
 }
 public void draw() 
 {
@@ -20,10 +28,43 @@ public void draw()
   }
   fill(50);
   background (0);
+    for (int i = 0; i < stars.length; i++)
+  {
+   stars[i].show();
+   System.out.println("Star" + System.currentTimeMillis());
+  }
   Blaster.show();
-  Blaster.rotate(Blaster);
+  System.out.println("Blaster" + System.currentTimeMillis());
   Blaster.keyPressed();
+  Blaster.rotate(Blaster);
   Blaster.move();
+}
+void keyPressed()
+{
+ if (keyPressed && keyCode == ALT)
+ {
+   Blaster.setX((int)(Math.random()*sw));
+   Blaster.setY((int)(Math.random()*sh));
+   Blaster.setDirectionX(0);
+   Blaster.setDirectionY(0);
+ }
+}
+
+public class Star
+{
+  int posX, posY, mySize;
+  public Star()
+  {
+    posX = (int)(Math.random()*width);
+    posY = (int)(Math.random()*height);
+    mySize = (int)(Math.random()*5);
+  }
+  public void show()
+  {
+    noStroke();
+    fill(255, 200);
+    ellipse(posX, posY, mySize, mySize);
+  }
 }
 class SpaceShip extends Floater  
 { 
