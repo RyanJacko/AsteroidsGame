@@ -65,6 +65,8 @@ public class Bar
    rect (1250,800,50,800);
   }
 }
+class Astroid extends Floater
+{
   
 public class Star
 {
@@ -167,9 +169,9 @@ class SpaceShip extends Floater
     {
       Blaster.accelerate(0.1);
     }
-    if (keyPressed && keyCode == DOWN)
+    if (keyPressed && keyCode == SHIFT /*&& Temp1 != 0*/)
     {
-      Blaster.accelerate(-0.1);
+      dAmount = dAmount - 0.1;
     }
     if (keyPressed && keyCode == ALT)
     {
@@ -178,6 +180,7 @@ class SpaceShip extends Floater
       Blaster.setDirectionX(0);
       Blaster.setDirectionY(0);
     }
+   
   }
   public void show ()
   { 
@@ -228,12 +231,13 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public double getDirectionY();   
   abstract public void setPointDirection(int degrees);   
   abstract public double getPointDirection(); 
+  public double dAmount;
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
   {          
-    //convert the current direction the floater is pointing to radians    
-    double dRadians =myPointDirection*(Math.PI/180);     
+    //convert the current direction the floater is pointing to radians
+    double dRadians = myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));
